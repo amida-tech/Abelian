@@ -13,14 +13,22 @@
 
 # - name: Update repositories cache 
   # apt: update_cache=yes      
-- name: Add Extra Packages for Enterprise Linux repository 
-  yum: name="http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm" state=present
+#- name: Add Extra Packages for Enterprise Linux repository 
+#  yum: name="http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-*.noarch.rpm" state=present
 
 - name: Install unzip
   yum: name=unzip state=present
 
 - name: Install wget
   yum: name=wget state=present 
+
+- name: get epel package
+  command: wget -r --no-parent -A 'epel-release-*.rpm' http://dl.fedoraproject.org/pub/epel/7/x86_64/e/
+  sudo: yes
+
+- name: install epel
+  command: rpm -Uvh dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-*.rpm
+  sudo: yes
 
 - name: Install the Development tools package group
   yum: name="@Development tools" state=present

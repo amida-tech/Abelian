@@ -17,7 +17,7 @@
       - nodejs      
 
 - name: Install npm
-  shell: curl https://www.npmjs.org/install.sh | sh      
+  shell: curl -L https://www.npmjs.org/install.sh | sh      
       
 - name: Install node.js module forever as global
   npm: name=forever global=yes  
