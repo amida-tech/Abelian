@@ -1,2 +1,2 @@
-Ubuntu trusty box download:
-http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
+//Deploy to aws ec2 (medium instance, centos 7 AWI from marketplace) from command line
+ansible-playbook playbook.yml -i hosts.ini -u centos --private-key your.pem -vvvv
